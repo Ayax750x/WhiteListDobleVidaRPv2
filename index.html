@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Normativa General Servidor FiveM</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap");
+      /* Reset and base */
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Roboto", sans-serif;
+        background: url("https://preview.redd.it/1ve9u445vwud1.png?width=1080&crop=smart&auto=webp&s=28f312b3b6fa05b93b42021381c0e18b2625ec71")
+          no-repeat center center fixed;
+        background-size: cover;
+        color: #eee;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow: hidden;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: column;
+      }
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 10, 20, 0.75);
+        z-index: -1;
+      }
+      .container {
+        position: relative;
+        align-self: center;
+        padding: 1.2rem 1rem 1rem 1rem;
+        height: 55rem;
+        width: 30rem;
+        margin-top: 1rem;
+        flex: 1 1 auto;
+      }
+      header {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+        position: relative;
+      }
+      .logo {
+        width: 120px;
+        height: 120px;
+        border-radius: 100%;
+        background: url("https://imgur.com/a/S4yqKZb")
+            center/100% no-repeat,
+          #111;
+        box-shadow: 0 0 8px rgb(255, 196, 0), 0 0 15px rgb(255, 196, 0), 0 0 30px rgb(255, 196, 0),
+          inset 0 0 8px rgb(255, 196, 0);
+        border: 3.5px solid rgb(255, 196, 0);
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        height: 80vh;
+        gap: 1rem;
+      }
+      .inputs-top {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 10px;
+      }
+      .input-box {
+        flex: 1 1 48%;
+        display: flex;
+        flex-direction: column;
+      }
+      label {
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 3px;
+        color: rgb(255, 196, 0);
+        font-family: "Orbitron", sans-serif;
+      }
+      input[type="text"],
+      input[type="number"] {
+        padding: 7px 10px;
+        border-radius: 5px;
+        border: 2px solid rgb(255, 196, 0);
+        background: #111;
+        color: rgb(247, 0, 255);
+        font-size: 1rem;
+        font-weight: 600;
+        font-family: "Roboto", sans-serif;
+        outline-offset: 2px;
+        outline-color: #0ff;
+        transition: border-color 0.3s ease;
+      }
+      input[type="text-example"]{
+        padding: 7px 10px;
+        border-radius: 9px;
+        border: 2px solid rgb(247, 0, 255);
+        margin-top: 5px;
+        font-style: italic;
+        color: rgba(255, 196, 0, 0.911);
+        background: rgba(36, 20, 40, 0.85);
+        font-size: 0.95rem;
+      }
+      input[type="text"]::placeholder,
+      input[type="number"]::placeholder {
+        color: rgb(255, 196, 0);
+        font-style: italic;
+      }
+      input[type="text-example"]::placeholder{
+        color: rgb(247, 0, 255);
+        font-style: italic;
+      }
+      
+      input[type="text"]:focus,
+      input[type="number"]:focus {
+        border-color: rgb(255, 196, 0);
+      }
+      .questions {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        max-height: 60vh;
+        overflow-y: auto;
+        padding-right: 6px;
+      }
+      .question strong {
+        font-family: "Orbitron", sans-serif;
+        color: rgba(255, 196, 0, 0.911);
+      }
+      .example {
+        padding: 13px 15px;
+        border-radius: 9px;
+        border: 2px solid rgb(247, 0, 255);
+        margin-top: 5px;
+        font-style: italic;
+        font-size: 0.95rem;
+        color: rgba(255, 196, 0, 0.911);
+        background: rgba(40, 33, 20, 0.85);
+        font-size: 0.9rem;
+        border-radius: 9px;
+      }
+      .checkbox-box {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 15px 0 12px 0;
+      }
+      input[type="checkbox"] {
+        width: 19px;
+        height: 19px;
+        cursor: pointer;
+      }
+      p {
+        text-align: center;
+        font-family: "Orbitron", sans-serif;
+        font-weight: 600;
+        font-size: 1.2rem;
+        color: rgba(247, 0, 255, 0.836);
+      }
+      label[for="accept-checkbox"] {
+        font-size: 0.95rem;
+        color: rgb(255, 196, 0);
+        font-family: "Roboto", sans-serif;
+      }
+      button {
+        background: rgb(255, 196, 0);
+        border: none;
+        border-radius: 8px;
+        padding: 12px;
+        font-weight: 700;
+        font-family: "Orbitron", sans-serif;
+        font-size: 1.1rem;
+        color: #000;
+        cursor: pointer;
+        box-shadow: 0 0 12px rgba(225, 0, 255, 0.575), 0 0 30px rgba(225, 0, 255, 0.575);
+        transition: background-color 0.3s ease;
+      }
+      button:hover {
+        background: rgba(225, 0, 255, 0.932);
+        color: #000;
+      }
+      /* Scrollbar styling for questions */
+      .questions::-webkit-scrollbar {
+        width: 10px;
+      }
+      .questions::-webkit-scrollbar-thumb {
+        background-color: rgba(209, 153, 0, 0.76);
+        border-radius: 10px;
+      }
+      .questions::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      /* Estilo para los campos de ejemplo */
+      .example-input {
+        width: 100%;
+        margin-left: 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="overlay"></div>
+    <div
+      class="container"
+      role="main"
+      aria-label="Formulario de normativa para servidor FiveM">
+      <header>
+        <div class="logo" aria-label="Logo redondo con borde neon"></div>
+      </header>
+      <form id="normativa-form">
+        <p>Bienvenid@ a nuestro servidor DobleVidaRP. A continuación encontrarás algunas preguntas las cuales haran que podamos evaluar tu experiencia en rol</p>
+        <div class="inputs-top">
+          <div class="input-box">
+            <label for="discord-alias">Alias original de Discord</label>
+            <input
+              type="text"
+              id="discord-alias"
+              name="discordAlias"
+              placeholder="Ejemplo: Usuario#1234"
+              required
+              aria-required="true"
+              pattern="[^\s]+"
+            />
+          </div>
+          <div class="input-box">
+            <label for="age">Edad</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              min="16"
+              max="99"
+              placeholder="Ejemplo: 25 (Años reales)"
+              required
+              aria-required="true"
+            />
+          </div>
+        </div>
+
+        <section
+          class="questions"
+          aria-label="Lista de preguntas y ejemplos de la normativa"
+        >
+          <!-- 15 questions with example -->
+          <div class="question">
+            <strong
+              >1. ¿Está prohibido usar cheats o mods no autorizados?</strong
+            >
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong
+              >2. ¿Se debe respetar a todos los jugadores y al staff?</strong
+            >
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong
+              >3. ¿Está permitido el roleplay fuera del contexto del
+              servidor?</strong
+            >
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>4. ¿Se puede abusar de bugs o exploits?</strong>
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>5. ¿Cuál es la edad mínima para jugar en el servidor?</strong
+            >
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>6. ¿Cuántos personajes puedes crear?</strong>
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>7. ¿Se permite el spam en el chat?</strong>
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>8. ¿Qué hacer si un jugador incumple las normas?</strong>
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>9. ¿Está permitido insultar a los miembros del staff?</strong>
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+          <div class="question">
+            <strong>10. ¿Se puede modificar el servidor o sus scripts?</strong>
+            <input type="text-example" class="example-input" placeholder="Escribe tu ejemplo aquí" />
+          </div>
+
+        </section>
+        <div class="checkbox-box">
+          <input type="checkbox" id="accept-checkbox" name="acceptNorm" />
+          <label for="accept-checkbox"
+            >Acepto la normativa y entiendo que el incumplimiento de la misma
+            conllevará a la expulsión del servidor.</label
+          >
+        </div>
+        <button type="submit" aria-label="Enviar formulario de normativa">
+          Enviar
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // Replace this with your actual Discord Webhook URL
+      const DISCORD_WEBHOOK_URL =
+        "https://discord.com/api/webhooks/1367962974916186213/z3lAML73BfX8NLl64jFpnZIitDWUvR_Hoc1MMxoZ4EhATwX4qJjANzoYcMv7HcG-B1Ze";
+
+        document.getElementById("normativa-form").addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const alias = e.target.discordAlias.value.trim();
+          const age = e.target.age.value.trim();
+          const accepted = e.target.acceptNorm.checked;
+
+          if (!alias) {
+            alert("Por favor, introduce tu alias original de Discord.");
+            return;
+          }
+          if (!age || isNaN(age) || age < 16 || age > 99) {
+            alert("Por favor, introduce una edad válida entre 16 y 99 años.");
+            return;
+          }
+          if (!accepted) {
+            alert("Debes aceptar la normativa para continuar.");
+            return;
+          }
+        // Obtener respuestas de las preguntas
+        const responses = Array.from(document.querySelectorAll('.questions input[type="text-example"]')).map(input => input.value.trim());
+
+          // Compose message for Discord embed
+          const questions = [
+            "¿Está prohibido usar cheats o mods no autorizados?",
+            "¿Se debe respetar a todos los jugadores y al staff?",
+            "¿Está permitido el roleplay fuera del contexto del servidor?",
+            "¿Se puede abusar de bugs o exploits?",
+            "¿Cuál es la edad mínima para jugar en el servidor?",
+            "¿Cuántos personajes puedes crear?",
+            "¿Se permite el spam en el chat?",
+            "¿Qué hacer si un jugador incumple las normas?",
+            "¿Está permitido insultar a los miembros del staff?",
+            "¿Se puede modificar el servidor o sus scripts?",
+          ];
+
+          // Compose embed description listing questions and examples
+          let description = "";
+        for (let i = 0; i < questions.length; i++) {
+          description += `**${i + 1}. ${questions[i]}**\nRespuesta: ${responses[i] || "No proporcionada"}\n\n`;
+        }
+
+          const payload = {
+          username: "Normativa FiveM Server",
+          embeds: [
+            {
+              title: "Nuevo formulario de Normativa enviado",
+              color: 15105570,
+              fields: [
+                { name: "Alias Discord", value: alias, inline: true },
+                { name: "Edad", value: age.toString(), inline: true },
+                {
+                  name: "Respuestas",
+                  value: description.length > 2000 ? description.substring(0, 1996) + "..." : description,
+                },
+              ],
+              timestamp: new Date().toISOString(),
+            },
+          ],
+        };
+
+        try {
+          const response = await fetch(DISCORD_WEBHOOK_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
+          if (response.ok) {
+            alert("Formulario enviado correctamente. Gracias por aceptar la normativa.");
+            e.target.reset();
+          } else {
+            alert("Error al enviar el formulario. Por favor, inténtalo de nuevo más tarde.");
+          }
+        } catch (err) {
+          alert("No se pudo conectar con Discord. Revisa tu conexión y vuelve a intentar.");
+        }
+      });
+    </script>
+  </body>
+</html>
